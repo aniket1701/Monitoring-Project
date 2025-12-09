@@ -256,6 +256,18 @@ This project helped me understand:
 
 ✔ Training lab for Prometheus & Grafana
 
+## 🛡️ 9. Production Recommendations
+
+- Use Nginx reverse proxy for HTTPS
+
+- Protect Grafana with IAM or strong credentials
+
+- Restrict Security Group ports (3000, 9090, 8080, 9093)
+
+- Enable EC2 Auto Recovery
+
+- Enable Prometheus persistence (volumes)
+
 ## 🤝 Contributions
 
 Pull requests are welcome. Feel free to fork the repository.
