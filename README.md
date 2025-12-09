@@ -54,16 +54,16 @@ The monitoring stack consists of:
 
 ## 📂 Project Structure
 
-      monitoring-project/
-    │
-    ├── docker-compose.yml
-    │
-    ├── prometheus/
-    │   ├── prometheus.yml
-    │   └── alert.rules.yml
-    │
-    └── grafana/
-    └── provisioning/
+    monitoring-project/
+     │
+     ├── docker-compose.yml
+     │
+     ├── prometheus/
+     │   ├── prometheus.yml
+     │   └── rules.yml
+     │
+     └── alertmanager
+         └── alertmanager.yml
         
 
 ## 🔧 Technologies Used
