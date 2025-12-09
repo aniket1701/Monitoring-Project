@@ -131,6 +131,13 @@ Add your user to Docker group:
     sudo usermod -aG docker $USER
     newgrp docker
 
+Fix Permissions on Docker Socket (Optional but Quick Fix)
+
+    sudo chmod 666 /var/run/docker.sock
+
+
+(not recommended for production — only use for local testing)
+
 ## 🐳 3. Install Docker Compose
     sudo apt install docker-compose -y
 
@@ -149,9 +156,15 @@ Check version:
      git clone https://github.com/<your-username>/monitoring-project.git
      cd monitoring-project
 
-###  Start the Monitoring Stack
+###  Start all services
 
     docker-compose up -d
+
+ Check running containers:
+
+    docker ps
+
+
 
 ### Access Monitoring Tools via Browser
 
@@ -164,27 +177,55 @@ Replace EC2-PUBLIC-IP with your localhost.
 | cAdvisor     | [http://localhost:8080](http://localhost:8080) |
 | Alertmanager | [http://localhost:9093](http://localhost:9093) |
 
+## Add Prometheus as Data Source in Grafana
 
-## 🔐 Grafana Login
+Open Grafana → http://localhost:3000      (Replace local host with your EC2 public_IP)
 
-    Username: admin
-    Password: admin
+Login → admin / admin
 
-(You will be prompted to reset the password)
+Go to Configuration → Data Sources
 
-## 📊 Dashboards Included
+Add Prometheus
 
-- Container CPU usage
+URL:
 
-- Container Memory usage
+    http://prometheus:9090
 
-- Network I/O
 
-- Filesystem usage
+Click Save & Test
 
-- Prometheus internal metrics
+##  Create Grafana Dashboard
+Create new panel → Add these queries:
 
-- Custom alert panels
+🔹 CPU Usage Query
+
+    rate(container_cpu_usage_seconds_total{container!=""}[1m]) * 100
+
+🔹 Memory Usage Query
+
+    container_memory_usage_bytes{container!=""}
+
+🔹 Network In
+
+    rate(container_network_receive_bytes_total{container!=""}[1m])
+
+🔹 Network Out
+
+    rate(container_network_transmit_bytes_total{container!=""}[1m])
+
+
+Save dashboard → Done.
+
+## Test Alerts in Prometheus
+
+Open:
+
+http://localhost:9090/alerts
+
+
+You will see the alerts you defined.
+
+If a container crosses your threshold, the alert will fire and show in Alertmanager.
 
 ## ⚙️ Prometheus Configuration Example
 
@@ -281,9 +322,3 @@ Role: Cloud/DevOps Engineer (Fresher)
 Email: aiketkolhe1701@gmail.com
 
 Location: Pune, Maharashtra
-
-
-
-
-
-
