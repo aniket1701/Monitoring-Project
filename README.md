@@ -155,7 +155,7 @@ Check version:
 
 ### Access Monitoring Tools via Browser
 
-Replace <EC2-PUBLIC-IP> with your localhost.
+Replace EC2-PUBLIC-IP with your localhost.
 
 | Service      | URL                                            |
 | ------------ | ---------------------------------------------- |
