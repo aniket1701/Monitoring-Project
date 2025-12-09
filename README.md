@@ -52,7 +52,7 @@ The monitoring stack consists of:
 ✔ Infrastructure-as-code using Docker Compose
 
 
-# 📂 Project Structure
+## 📂 Project Structure
 
       monitoring-project/
     │
