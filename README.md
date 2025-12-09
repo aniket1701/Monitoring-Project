@@ -4,6 +4,10 @@
 
 ## 📌 Project Overview
 
+
+ 
+
+
 #### This project demonstrates how to monitor a containerized application using:
 
 - Prometheus – Metrics collection
@@ -17,6 +21,8 @@
 The setup uses Docker Compose to build a full end-to-end monitoring stack.
 
 ## 🚀 Architecture
+
+<img width="450" height="800" alt="ChatGPT Image Dec 9, 2025, 10_10_39 PM" src="https://github.com/user-attachments/assets/9b230a41-a763-44fd-abad-7932e3e613c4" />
 
 The monitoring stack consists of:
 
@@ -34,9 +40,6 @@ The monitoring stack consists of:
 
 - Docker Compose orchestrating all services
 
-      [Containers] → [cAdvisor] → [Prometheus] → [Grafana]
-                             ↓
-                        [Alertmanager]
 
 
 ## 🧩 Project Features
